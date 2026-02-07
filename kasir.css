@@ -14,87 +14,77 @@ body {
     display: flex;
     height: 100vh;
 }
-
 /* SIDEBAR KIRI */
 .sidebar-left {
-    width: 260px;
+    width: 250px;
     background: white;
-    padding: 30px 20px;
     border-right: 1px solid #e2e8f0;
     display: flex;
     flex-direction: column;
+    padding: 30px 20px;
 }
-
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
     margin-bottom: 40px;
 }
-
 .logo-box {
     background: #2563eb;
     color: white;
-    padding: 8px 14px;
-    border-radius: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
     font-weight: bold;
     font-size: 1.2rem;
+    margin-right: 10px;
 }
-
 .logo-text {
-    font-weight: 800;
-    letter-spacing: 1px;
     font-size: 1.1rem;
-}
-
-.menu-label {
-    font-size: 0.7rem;
-    color: #94a3b8;
     font-weight: bold;
-    margin-bottom: 15px;
+    color: #334155;
 }
-
+.menu-list {
+    list-style: none;
+    flex: 1;
+}
 .menu-item {
     display: flex;
     align-items: center;
-    gap: 15px;
     padding: 12px 15px;
-    text-decoration: none;
+    border-radius: 10px;
     color: #64748b;
-    border-radius: 12px;
-    margin-bottom: 5px;
-    transition: 0.3s;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.2s;
 }
-
+.menu-item:hover,
 .menu-item.active {
-    background: #eff6ff;
+    background: #f1f5f9;
     color: #2563eb;
+}
+.menu-item i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
+.menu-label {
     font-weight: 600;
+    font-size: 0.95rem;
 }
-
-.menu-item:hover:not(.active) {
-    background: #f8fafc;
-}
-
 .search-box {
-    margin-top: auto;
-    position: relative;
+    margin-top: 20px;
 }
-
 .search-box input {
     width: 100%;
-    padding: 12px 12px 12px 40px;
-    border-radius: 12px;
-    border: none;
-    background: #f1f5f9;
+    padding: 10px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #334155;
+    transition: 0.2s;
 }
-
-.search-box i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #94a3b8;
+.search-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.3);
 }
 
 /* AREA TENGAH */
@@ -249,6 +239,24 @@ body {
 .checkout-footer {
     border-top: 1px solid #f1f5f9;
     padding-top: 20px;
+}
+
+.checkout-footer select,
+.checkout-footer input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.checkout-footer select:focus,
+.checkout-footer input[type="number"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 6px rgba(37,99,235,0.12);
 }
 
 .summary-line {

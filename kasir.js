@@ -119,4 +119,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize tampilan cart
   updateCart();
+  // Wire pay button to payment page
+  const payBtn = document.getElementById('btnPay');
+  if (payBtn) {
+    payBtn.addEventListener('click', function() {
+      if (Object.keys(cart).length === 0) {
+        alert('Belum ada pesanan.');
+        return;
+      }
+
+      // Hitung totals
+      let subtotal = 0;
+      for (let productId in cart) {
+        const item = cart[productId];
+        subtotal += item.price * item.quantity;
+      }
+      const tax = Math.round(subtotal * 0.1);
+      const total = subtotal + tax;
+
+      // Simpan data checkout ke localStorage dan pergi ke halaman bayar
+      const checkout = { cart: cart, subtotal: subtotal, tax: tax, total: total };
+      localStorage.setItem('checkout_data', JSON.stringify(checkout));
+      window.location.href = 'bayar.html';
+    });
+  }
+
+  // Jika datang dari halaman bayar, tampilkan kembalian terakhir (jika ada)
+  const lastChangeRaw = localStorage.getItem('last_change');
+  if (lastChangeRaw !== null) {
+    const lastChangeEl = document.getElementById('lastChange');
+    if (lastChangeEl) {
+      const val = parseInt(lastChangeRaw) || 0;
+      lastChangeEl.textContent = formatPrice(val);
+    }
+    // Hapus setelah ditampilkan sekali
+    localStorage.removeItem('last_change');
+  }
 });
+
+// Helper to clear checkout storage (optional)
+function clearCheckoutStorage() {
+  localStorage.removeItem('checkout_data');
+}
